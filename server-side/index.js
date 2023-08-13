@@ -97,6 +97,8 @@ app.get('/api/todos/:username', async (req, res) => {
     const username = req.params.username;
     try {
         const user = await User.findOne({ username });
+        console.clear();
+        console.log("user ==> ", user);
         if (!user) {
             return res.status(404).json({ error: 'User not found' });
         }
