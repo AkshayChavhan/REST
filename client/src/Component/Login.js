@@ -14,11 +14,11 @@ const Login = () => {
             // Simulate a login by sending the token to the server for validation
             const token = localStorage.getItem(username); // Retrieve token from localStorage
             const secretKey = localStorage.getItem(`${username}_secretKey`);
-            const response = await axios.post('http://localhost:5000/api/validate-token', { token , secretKey });
+            const response = await axios.post('http://localhost:5000/api/validate-token', { token, secretKey });
             console.log('response :', response);
             if (response.data.valid) {
                 // Token is valid, navigate to the dashboard
-                navigate('/dashboard' ,  { state: { userData: response.data.userData } });
+                navigate('/dashboard', { state: { userData: response.data.userData } });
             } else {
                 navigate('/');
             }
@@ -38,20 +38,32 @@ const Login = () => {
     return (
         <div>
             <h2>Login</h2>
-            <input
-                type="text"
-                placeholder="Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                autoComplete='off'
-            />
+            <label class="block">
+                <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
+                    User-Name
+                </span>
+                <input
+                    type="text"
+                    placeholder="Username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    autoComplete='off'
+                    class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
+                />
+            </label>
+            <label class="block">
+                <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
+                    Password
+                </span>
             <input
                 type="password"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 autoComplete='off'
+                class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
             />
+            </label>
             <button onClick={handleLogin}>Login</button>
         </div>
     );
