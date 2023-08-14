@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Navbar from "../modal/Navbar";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -37,34 +38,45 @@ const Login = () => {
 
     return (
         <div>
-            <h2>Login</h2>
-            <label class="block">
-                <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
-                    User-Name
-                </span>
-                <input
-                    type="text"
-                    placeholder="Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    autoComplete='off'
-                    class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
-                />
-            </label>
-            <label class="block">
-                <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
-                    Password
-                </span>
-            <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                autoComplete='off'
-                class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
-            />
-            </label>
-            <button onClick={handleLogin}>Login</button>
+            <Navbar />
+            <header className="bg-white shadow">
+                <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+                    <h1 className="text-3xl font-bold tracking-tight text-gray-900">Log in </h1>
+                </div>
+            </header>
+            <main>
+                <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+                    <div style={{ display: 'flex', flexDirection: "column", width: '30vw' }}>
+                        <label class="block">
+                            <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
+                                User-Name
+                            </span>
+                            <input
+                                type="text"
+                                placeholder="Username"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                autoComplete='off'
+                                class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
+                            />
+                        </label>
+                        <label class="block">
+                            <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
+                                Password
+                            </span>
+                            <input
+                                type="password"
+                                placeholder="Password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                autoComplete='off'
+                                class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
+                            />
+                        </label>
+                        <button onClick={handleLogin}>Login</button>
+                    </div>
+                </div>
+            </main>
         </div>
     );
 };

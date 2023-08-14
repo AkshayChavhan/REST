@@ -5,13 +5,16 @@ const cors = require('cors');
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
+const dotenv = require("dotenv");
+
+dotenv.config();
+
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-const PORT = 5000;
-
-const URL = "mongodb+srv://akshaychavhan676:mGUFQAUTtRtH0wE2@cluster0.sfq1qjv.mongodb.net/";
+const PORT = process.env.PORT;
+const URL = process.env.DB_URL;
 
 mongoose.connect(URL, {
     useNewUrlParser: true,
@@ -162,6 +165,7 @@ app.delete('/api/todos/:username/:id', async (req, res) => {
 
 
 app.listen(PORT, () => {
+    console.log("PORT and URL  => ",process.env.PORT , process.env.DB_URL);
     console.log(`Server is running on port ${PORT}`);
 });
 
